@@ -1,0 +1,23 @@
+div {
+    font-size:20px;
+    margin: 10px 20px;
+}
+
+#size {
+    display: inline-block;
+}
+
+#reset {
+    display: inline-block;
+}
+
+#info {
+    position:fixed;
+    left:820px;
+    top:100px;
+    height:100px;
+    width:450px;
+}
+#myCanvas{
+    display:block;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>堀北铃音同款日程表</title>
+    <link rel="stylesheet" type="text/css" href="demo.css"/>
+    <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="demo.js"></script>
+</head>
+
+<body>
+    <div id="size">
+        定义大小：
+        <button class="size" id="small">小</button>
+        <button class="size" id="middle">中</button>
+        <button class="size "id="large">大</button>
+    </div>
+
+    <div id="reset">
+        <button class="reset" id="clear">重置</button>
+    </div>
+    <div id="warn">
+
+    </div>
+    <canvas id="myCanvas" width="810" height="710"></canvas>
+    <div id="info">
+        <form id="input">
+            事件：<input type="text" name="事件名称"/>
+            颜色：<select name="color"/>
+            <option value="red">Red</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="orange">Orange</option>
+            <option value="brown">Brown</option>
+            <option value="purple">Purple</option>
+            </select>
+        </form>
+        <button id="createEvent">创建事件</button>
+        <ul id="table">
+            <li>事件 颜色</li>
+        </ul>
+    </div>
+</body>
+</html>
