@@ -1,11 +1,12 @@
 $(document).ready(function(){
     var Circle={
         x:405,
-        y:305,
+        y:345,
         Radius:300
     };
     var arr=new Array();//存放event
     var rangeArr=new Array();//存放区间
+    var uid=0;
     reset();
 
     //button控件部分
@@ -43,19 +44,21 @@ $(document).ready(function(){
             });
             var $addButton=$("<button class='createNode'>+</button>");
             var $deleteButton=$("<button class='deleteNode'>x</button>");
-            var $newList=$("<li name="+arr.length+">"+$("#input").children()[0].value+" "+$("#input").children()[1].value+"</li>");
+            var $newList=$("<li name="+uid+">"+$("#input").children()[0].value+" "+$("#input").children()[1].value+"</li>");
 
-            $addButton.on("click",null,{value:arr.length},drawAfterClick);
+            $addButton.on("click",null,{value:uid},drawAfterClick);
             $newList.append($addButton);
             $newList.append($deleteButton);
             $("#table").append($newList);
+            uid=uid+1;
 
         }
 
     });
 
+    //addButton的点击事件，负责绘制图像
     function drawAfterClick(event){
-        var nodeNum=event.data.value-1;
+        var nodeNum=event.data.value;
         var start=Number(prompt("请输入开始时间","0"));
         var end=Number(prompt("请输入结束时间","0"));
 
@@ -103,6 +106,7 @@ $(document).ready(function(){
     function DrawPicture(range){
         var canvas=document.getElementById("myCanvas");
         var ctx=$("#myCanvas")[0].getContext("2d");
+
         ctx.beginPath();
         ctx.strokeStyle="black";
         ctx.arc(Circle.x,Circle.y,Circle.Radius,changePI(range.start),changePI(range.end));
@@ -114,6 +118,28 @@ $(document).ready(function(){
         ctx.stroke();
         ctx.fillStyle=range.color;
         ctx.fill();
+
+        ctx.fillStyle="black";
+        ctx.font="5px Georgia";
+        //clock number
+        var bigCircle={
+            x:Circle.x,
+            y:Circle.y,
+            Radius:Circle.Radius+20
+        };
+        var newPoint=changePoint(bigCircle,range.start);
+        ctx.fillText(range.start,newPoint.x,newPoint.y);
+        newPoint=changePoint(bigCircle,range.end);
+        ctx.fillText(range.end,newPoint.x,newPoint.y);
+
+        ctx.font=(range.end-range.start)*5+25+"px Georgia";
+        var smallCircle={
+            x:Circle.x,
+            y:Circle.y,
+            Radius:Circle.Radius/2
+        };
+        var textPoint=changePoint(smallCircle,(range.start+range.end)/2);
+        ctx.fillText(range.name,textPoint.x,textPoint.y);
     }
 
 }

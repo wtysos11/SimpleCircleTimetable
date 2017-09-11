@@ -3,6 +3,10 @@ div {
     margin: 10px 20px;
 }
 
+#table{
+    list-style: none;
+}
+
 #size {
     display: inline-block;
 }
