@@ -47,6 +47,7 @@ $(document).ready(function(){
             var $newList=$("<li name="+uid+">"+$("#input").children()[0].value+" "+$("#input").children()[1].value+"</li>");
 
             $addButton.on("click",null,{value:uid},drawAfterClick);
+            $deleteButton.on("click",null,{value:uid},deleteTheButton);
             $newList.append($addButton);
             $newList.append($deleteButton);
             $("#table").append($newList);
@@ -73,6 +74,11 @@ $(document).ready(function(){
             DrawPicture(range);
         }
 
+    }
+    //负责删除按钮对应的事件
+    function deleteTheButton(event)
+    {
+        $("li").remove("[name="+event.data.value+"]");
     }
 
 
